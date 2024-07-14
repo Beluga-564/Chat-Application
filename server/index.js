@@ -30,12 +30,6 @@ app.get("/ping", (_req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-// Use the client app
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/dist/index.html'))
-});
-
 const server = app.listen(process.env.PORT, () =>
   console.log(`Server started on ${process.env.PORT}`)
 );
